@@ -7,21 +7,41 @@
 package com.skylark.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Booking {
 
 	@Id
+	@GeneratedValue(generator = "increment")
 	private int bookingId;
-	private int flightId;
-	private int routeId;
-	private int paymentId;
-	private String psId;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Flight flightId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Payment paymentId;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@NotNull
+	private List<Passenger> psId;
+	
 	private LocalDate bookingDate;
-	private int bookingTotalFare;
+	private float bookingTotalFare;
 	private LocalDate bookingJourneyDate;
 	private String bookingSeatType;
 	private String bookingStatus;
@@ -31,13 +51,12 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(int bookingId, int flightId, int routeId, int paymentId, String psId, LocalDate bookingDate,
-			int bookingTotalFare, LocalDate bookingJourneyDate, String bookingSeatType, String bookingStatus,
+	public Booking(int bookingId, Flight flightId, Payment paymentId, List<Passenger> psId, LocalDate bookingDate,
+			float bookingTotalFare, LocalDate bookingJourneyDate, String bookingSeatType, String bookingStatus,
 			int numberOfSeats) {
 		super();
 		this.bookingId = bookingId;
 		this.flightId = flightId;
-		this.routeId = routeId;
 		this.paymentId = paymentId;
 		this.psId = psId;
 		this.bookingDate = bookingDate;
@@ -56,35 +75,27 @@ public class Booking {
 		this.bookingId = bookingId;
 	}
 
-	public int getFlightId() {
+	public Flight getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(int flightId) {
+	public void setFlightId(Flight flightId) {
 		this.flightId = flightId;
 	}
 
-	public int getRouteId() {
-		return routeId;
-	}
-
-	public void setRouteId(int routeId) {
-		this.routeId = routeId;
-	}
-
-	public int getPaymentId() {
+	public Payment getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(int paymentId) {
+	public void setPaymentId(Payment paymentId) {
 		this.paymentId = paymentId;
 	}
 
-	public String getPsId() {
+	public List<Passenger> getPsId() {
 		return psId;
 	}
 
-	public void setPsId(String psId) {
+	public void setPsId(List<Passenger> psId) {
 		this.psId = psId;
 	}
 
@@ -96,11 +107,11 @@ public class Booking {
 		this.bookingDate = bookingDate;
 	}
 
-	public int getBookingTotalFare() {
+	public float getBookingTotalFare() {
 		return bookingTotalFare;
 	}
 
-	public void setBookingTotalFare(int bookingTotalFare) {
+	public void setBookingTotalFare(float bookingTotalFare) {
 		this.bookingTotalFare = bookingTotalFare;
 	}
 
@@ -138,12 +149,11 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", flightId=" + flightId + ", routeId=" + routeId + ", paymentId="
-				+ paymentId + ", psId=" + psId + ", bookingDate=" + bookingDate + ", bookingTotalFare="
-				+ bookingTotalFare + ", bookingJourneyDate=" + bookingJourneyDate + ", bookingSeatType="
-				+ bookingSeatType + ", bookingStatus=" + bookingStatus + ", numberOfSeats=" + numberOfSeats + "]";
+		return "Booking [bookingId=" + bookingId + ", flightId=" + flightId + ", paymentId=" + paymentId + ", psId="
+				+ psId + ", bookingDate=" + bookingDate + ", bookingTotalFare=" + bookingTotalFare
+				+ ", bookingJourneyDate=" + bookingJourneyDate + ", bookingSeatType=" + bookingSeatType
+				+ ", bookingStatus=" + bookingStatus + ", numberOfSeats=" + numberOfSeats + "]";
 	}
-	
 	
 	
 	

@@ -6,8 +6,15 @@
  */
 package com.skylark.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import com.sun.istack.NotNull;
 
 @Entity
 
@@ -15,7 +22,11 @@ public class Airports {
 
 	@Id
 	private String IATACode;
-	private int flightId;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private List<Flight> flightId;
 	private String airportName;
 	private String airportState;
 	private String airportCity;
@@ -24,7 +35,7 @@ public class Airports {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Airports(String iATACode, int flightId, String airportName, String airportState, String airportCity) {
+	public Airports(String iATACode, List<Flight> flightId, String airportName, String airportState, String airportCity) {
 		super();
 		IATACode = iATACode;
 		this.flightId = flightId;
@@ -41,11 +52,11 @@ public class Airports {
 		IATACode = iATACode;
 	}
 
-	public int getFlightId() {
+	public List<Flight> getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(int flightId) {
+	public void setFlightId(List<Flight> flightId) {
 		this.flightId = flightId;
 	}
 

@@ -17,13 +17,13 @@ public class Route {
 	private int routeId;
 	private String fromCity;
 	private String toCity;
-	private int fare;
+	private float fare;
 	
 	public Route() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Route(int routeId, String fromCity, String toCity, int fare) {
+	public Route(int routeId, String fromCity, String toCity, float fare) {
 		super();
 		this.routeId = routeId;
 		this.fromCity = fromCity;
@@ -55,11 +55,11 @@ public class Route {
 		this.toCity = toCity;
 	}
 
-	public int getFare() {
+	public float getFare() {
 		return fare;
 	}
 
-	public void setFare(int fare) {
+	public void setFare(float fare) {
 		this.fare = fare;
 	}
 

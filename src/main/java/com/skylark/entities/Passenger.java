@@ -6,16 +6,34 @@
  */
 package com.skylark.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Passenger {
 	@Id
 	private String psId;
-	private String PNR;
-	private String bookingId;
-	private String emailId;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn(name = "PNR")
+	private Ticket PNR;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn(name = "bookingId")
+	private Booking bookingId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Login emailId;
 	private String firstName;
 	private String lastName;
 	private String pincode;
@@ -25,8 +43,8 @@ public class Passenger {
 	public Passenger() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Passenger(String psId, String pNR, String bookingId, String emailId, String firstName, String lastName,
+
+	public Passenger(String psId, Ticket pNR, Booking bookingId, Login emailId, String firstName, String lastName,
 			String pincode, String gender, int phoneNumber) {
 		super();
 		this.psId = psId;
@@ -48,27 +66,27 @@ public class Passenger {
 		this.psId = psId;
 	}
 
-	public String getPNR() {
+	public Ticket getPNR() {
 		return PNR;
 	}
 
-	public void setPNR(String pNR) {
+	public void setPNR(Ticket pNR) {
 		PNR = pNR;
 	}
 
-	public String getBookingId() {
+	public Booking getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(String bookingId) {
+	public void setBookingId(Booking bookingId) {
 		this.bookingId = bookingId;
 	}
 
-	public String getEmailId() {
+	public Login getEmailId() {
 		return emailId;
 	}
 
-	public void setEmailId(String emailId) {
+	public void setEmailId(Login emailId) {
 		this.emailId = emailId;
 	}
 
@@ -118,7 +136,5 @@ public class Passenger {
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", pincode=" + pincode + ", gender=" + gender
 				+ ", phoneNumber=" + phoneNumber + "]";
 	}
-	
-	
 	
 }

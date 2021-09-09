@@ -6,24 +6,44 @@
  */
 package com.skylark.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Ticket {
+	
 	@Id
 	@GeneratedValue(generator = "increment")
 	private String PNR;
-	private int flightId;
-	private String psId;
-	private int bookingId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Flight flightId;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@NotNull
+	private List<Passenger> psId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Booking bookingId;
 	
 	public Ticket() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ticket(String pNR, int flightId, String psId, int bookingId) {
+	public Ticket(String pNR, Flight flightId, List<Passenger> psId, Booking bookingId) {
 		super();
 		PNR = pNR;
 		this.flightId = flightId;
@@ -39,27 +59,27 @@ public class Ticket {
 		PNR = pNR;
 	}
 
-	public int getFlightId() {
+	public Flight getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(int flightId) {
+	public void setFlightId(Flight flightId) {
 		this.flightId = flightId;
 	}
 
-	public String getPsId() {
+	public List<Passenger> getPsId() {
 		return psId;
 	}
 
-	public void setPsId(String psId) {
+	public void setPsId(List<Passenger> psId) {
 		this.psId = psId;
 	}
 
-	public int getBookingId() {
+	public Booking getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(int bookingId) {
+	public void setBookingId(Booking bookingId) {
 		this.bookingId = bookingId;
 	}
 
@@ -67,7 +87,5 @@ public class Ticket {
 	public String toString() {
 		return "Ticket [PNR=" + PNR + ", flightId=" + flightId + ", psId=" + psId + ", bookingId=" + bookingId + "]";
 	}
-	
-	
 	
 }
