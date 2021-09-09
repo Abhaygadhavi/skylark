@@ -1,3 +1,9 @@
+/*
+ * @author kashish.jain@stltech.in
+ * @version 1.0
+ * @creation_date 07-sept-2021
+ * @copyright Skylark Airlines
+ */
 package com.skylark.entities;
 
 import javax.persistence.Entity;
