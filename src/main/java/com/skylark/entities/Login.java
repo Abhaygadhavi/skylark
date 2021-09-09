@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Login {
 	@Id
 	private String emailId;
-	private int phoneNumber;
+	private long phoneNumber;
 	private String username;
 	private String password;
 	
@@ -38,7 +38,7 @@ public class Login {
 		this.emailId = emailId;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
