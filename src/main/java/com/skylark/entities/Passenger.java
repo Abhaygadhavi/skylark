@@ -23,37 +23,39 @@ public class Passenger {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn(name = "PNR")
-	private Ticket PNR;
+	private Ticket ticket;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn(name = "bookingId")
-	private Booking bookingId;
+	private Booking booking;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn
-	private Login emailId;
+	private Login login;
+	@NotNull
 	private String firstName;
+	@NotNull
 	private String lastName;
-	private String pincode;
+	@NotNull
 	private String gender;
+	@NotNull
 	private int phoneNumber;
 	
 	public Passenger() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Passenger(String psId, Ticket pNR, Booking bookingId, Login emailId, String firstName, String lastName,
-			String pincode, String gender, int phoneNumber) {
+	public Passenger(String psId, Ticket ticket, Booking booking, Login login, String firstName, String lastName,
+			 String gender, int phoneNumber) {
 		super();
 		this.psId = psId;
-		PNR = pNR;
-		this.bookingId = bookingId;
-		this.emailId = emailId;
+		this.ticket = ticket;
+		this.booking = booking;
+		this.login = login;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.pincode = pincode;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
 	}
@@ -66,28 +68,28 @@ public class Passenger {
 		this.psId = psId;
 	}
 
-	public Ticket getPNR() {
-		return PNR;
+	public Ticket getTicket() {
+		return ticket;
 	}
 
-	public void setPNR(Ticket pNR) {
-		PNR = pNR;
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 
-	public Booking getBookingId() {
-		return bookingId;
+	public Booking getBooking() {
+		return booking;
 	}
 
-	public void setBookingId(Booking bookingId) {
-		this.bookingId = bookingId;
+	public void setBooking(Booking booking) {
+		this.booking = booking;
 	}
 
-	public Login getEmailId() {
-		return emailId;
+	public Login getLogin() {
+		return login;
 	}
 
-	public void setEmailId(Login emailId) {
-		this.emailId = emailId;
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 	public String getFirstName() {
@@ -104,14 +106,6 @@ public class Passenger {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getPincode() {
-		return pincode;
-	}
-
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
 	}
 
 	public String getGender() {
@@ -132,8 +126,8 @@ public class Passenger {
 
 	@Override
 	public String toString() {
-		return "Passenger [psId=" + psId + ", PNR=" + PNR + ", bookingId=" + bookingId + ", emailId=" + emailId
-				+ ", firstName=" + firstName + ", lastName=" + lastName + ", pincode=" + pincode + ", gender=" + gender
+		return "Passenger [psId=" + psId + ", ticket=" + ticket + ", booking=" + booking + ", login=" + login
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
 				+ ", phoneNumber=" + phoneNumber + "]";
 	}
 	

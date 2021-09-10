@@ -13,7 +13,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.sun.istack.NotNull;
 
@@ -24,13 +25,19 @@ public class Flight {
 	@GeneratedValue(generator = "increment")
 	private int flightId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@NotNull
+	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull 
+	@JoinColumn
 	private Route route;
+	@NotNull
 	private LocalTime departureTime;
+	@NotNull
 	private LocalDate departureDate;
+	@NotNull
 	private LocalTime arrivalTime;
+	@NotNull
 	private LocalDate arrivalDate;
+	@NotNull
 	private int availableSeats;
 	
 	public Flight() {

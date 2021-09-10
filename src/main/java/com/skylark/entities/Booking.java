@@ -29,36 +29,41 @@ public class Booking {
 	@OneToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn
-	private Flight flightId;
+	private Flight flight;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn
-	private Payment paymentId;
+	private Payment payment;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "booking")
 	@NotNull
-	private List<Passenger> psId;
-	
+	private List<Passenger> passenger;
+	@NotNull
 	private LocalDate bookingDate;
+	@NotNull
 	private float bookingTotalFare;
+	@NotNull
 	private LocalDate bookingJourneyDate;
+	@NotNull
 	private String bookingSeatType;
+	@NotNull
 	private String bookingStatus;
+	@NotNull
 	private int numberOfSeats;
 	
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(int bookingId, Flight flightId, Payment paymentId, List<Passenger> psId, LocalDate bookingDate,
+	public Booking(int bookingId, Flight flight, Payment payment, List<Passenger> passenger, LocalDate bookingDate,
 			float bookingTotalFare, LocalDate bookingJourneyDate, String bookingSeatType, String bookingStatus,
 			int numberOfSeats) {
 		super();
 		this.bookingId = bookingId;
-		this.flightId = flightId;
-		this.paymentId = paymentId;
-		this.psId = psId;
+		this.flight = flight;
+		this.payment = payment;
+		this.passenger = passenger;
 		this.bookingDate = bookingDate;
 		this.bookingTotalFare = bookingTotalFare;
 		this.bookingJourneyDate = bookingJourneyDate;
@@ -75,28 +80,28 @@ public class Booking {
 		this.bookingId = bookingId;
 	}
 
-	public Flight getFlightId() {
-		return flightId;
+	public Flight getFlight() {
+		return flight;
 	}
 
-	public void setFlightId(Flight flightId) {
-		this.flightId = flightId;
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 
-	public Payment getPaymentId() {
-		return paymentId;
+	public Payment getPayment() {
+		return payment;
 	}
 
-	public void setPaymentId(Payment paymentId) {
-		this.paymentId = paymentId;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
-	public List<Passenger> getPsId() {
-		return psId;
+	public List<Passenger> getPassenger() {
+		return passenger;
 	}
 
-	public void setPsId(List<Passenger> psId) {
-		this.psId = psId;
+	public void setPassenger(List<Passenger> passenger) {
+		this.passenger = passenger;
 	}
 
 	public LocalDate getBookingDate() {
@@ -149,8 +154,8 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", flightId=" + flightId + ", paymentId=" + paymentId + ", psId="
-				+ psId + ", bookingDate=" + bookingDate + ", bookingTotalFare=" + bookingTotalFare
+		return "Booking [bookingId=" + bookingId + ", flight=" + flight + ", payment=" + payment + ", passenger="
+				+ passenger + ", bookingDate=" + bookingDate + ", bookingTotalFare=" + bookingTotalFare
 				+ ", bookingJourneyDate=" + bookingJourneyDate + ", bookingSeatType=" + bookingSeatType
 				+ ", bookingStatus=" + bookingStatus + ", numberOfSeats=" + numberOfSeats + "]";
 	}

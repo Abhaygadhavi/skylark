@@ -28,27 +28,27 @@ public class Ticket {
 	@OneToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn
-	private Flight flightId;
+	private Flight flight;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "ticket")
 	@NotNull
-	private List<Passenger> psId;
+	private List<Passenger> passenger;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@NotNull
 	@JoinColumn
-	private Booking bookingId;
+	private Booking booking;
 	
 	public Ticket() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ticket(String pNR, Flight flightId, List<Passenger> psId, Booking bookingId) {
+	public Ticket(String pNR, Flight flight, List<Passenger> passenger, Booking booking) {
 		super();
 		PNR = pNR;
-		this.flightId = flightId;
-		this.psId = psId;
-		this.bookingId = bookingId;
+		this.flight = flight;
+		this.passenger = passenger;
+		this.booking = booking;
 	}
 
 	public String getPNR() {
@@ -59,33 +59,33 @@ public class Ticket {
 		PNR = pNR;
 	}
 
-	public Flight getFlightId() {
-		return flightId;
+	public Flight getFlight() {
+		return flight;
 	}
 
-	public void setFlightId(Flight flightId) {
-		this.flightId = flightId;
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 
-	public List<Passenger> getPsId() {
-		return psId;
+	public List<Passenger> getPassenger() {
+		return passenger;
 	}
 
-	public void setPsId(List<Passenger> psId) {
-		this.psId = psId;
+	public void setPassenger(List<Passenger> passenger) {
+		this.passenger = passenger;
 	}
 
-	public Booking getBookingId() {
-		return bookingId;
+	public Booking getBooking() {
+		return booking;
 	}
 
-	public void setBookingId(Booking bookingId) {
-		this.bookingId = bookingId;
+	public void setBooking(Booking booking) {
+		this.booking = booking;
 	}
 
 	@Override
 	public String toString() {
-		return "Ticket [PNR=" + PNR + ", flightId=" + flightId + ", psId=" + psId + ", bookingId=" + bookingId + "]";
+		return "Ticket [PNR=" + PNR + ", flight=" + flight + ", passenger=" + passenger + ", booking=" + booking + "]";
 	}
 	
 }

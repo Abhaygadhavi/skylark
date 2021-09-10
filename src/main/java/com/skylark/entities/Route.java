@@ -6,17 +6,29 @@
  */
 package com.skylark.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Route {
 	@Id
 	@GeneratedValue(generator = "increment")
 	private int routeId;
+	
+	@OneToMany(mappedBy = "route")
+	@NotNull
+	private List<Flight> flight;
+	@NotNull
 	private String fromCity;
+	@NotNull
 	private String toCity;
+	@NotNull
 	private float fare;
 	
 	public Route() {
@@ -67,7 +79,6 @@ public class Route {
 	public String toString() {
 		return "Route [routeId=" + routeId + ", fromCity=" + fromCity + ", toCity=" + toCity + ", fare=" + fare + "]";
 	}
-	
 	
 	
 }

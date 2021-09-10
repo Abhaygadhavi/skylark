@@ -7,10 +7,12 @@
 
 package com.skylark.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.skylark.entities.Flight;
 
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
-
+	List<Flight> findByRoute_RouteId(int id);
 }

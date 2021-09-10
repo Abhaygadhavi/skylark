@@ -10,11 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class Payment {
 	@Id
 	@GeneratedValue(generator = "increment")
 	private int paymentId;
+	@NotNull
 	private String paymentType;
 	
 	public Payment() {

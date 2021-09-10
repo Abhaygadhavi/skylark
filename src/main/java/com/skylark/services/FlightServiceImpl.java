@@ -11,6 +11,7 @@ import com.skylark.entities.Flight;
 import com.skylark.exceptions.FlightNotFoundException;
 import com.skylark.repositories.FlightRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ public class FlightServiceImpl implements FlightService {
 			fliRepo.save(f);
 		else
 			throw new FlightNotFoundException("Sorry! No Flight exists");
+	}
+
+	@Override
+	public List<Flight> findFlightByRouteId(int id) {
+		// TODO Auto-generated method stub
+		return fliRepo.findByRoute_RouteId(id);
 	}
 
 }

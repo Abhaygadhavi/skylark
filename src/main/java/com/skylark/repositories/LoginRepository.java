@@ -1,5 +1,7 @@
 package com.skylark.repositories;
 
+import java.util.Optional;
+
 /*
  * @author abhay.gadhvi@stltech.in
  * @version 1.0
@@ -13,4 +15,6 @@ import com.skylark.entities.Login;
 
 public interface LoginRepository extends JpaRepository<Login, String> {
 
+	Optional<Login> findByPhoneNumber(long phoneNumber);
+	
 }

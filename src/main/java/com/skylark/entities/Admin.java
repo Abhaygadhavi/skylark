@@ -10,10 +10,13 @@ package com.skylark.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class Admin {
 	@Id
 	private String username;
+	@NotNull
 	private String password;
 	
 	public Admin() {

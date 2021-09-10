@@ -7,6 +7,8 @@
 
 package com.skylark.services;
 
+import java.util.List;
+
 import com.skylark.entities.Flight;
 import com.skylark.exceptions.FlightNotFoundException;
 
@@ -14,4 +16,5 @@ public interface FlightService {
 	void addFlight(Flight f);
 	void delFlight(int id) throws FlightNotFoundException;
 	void editFlight(Flight f) throws FlightNotFoundException;
+	List<Flight> findFlightByRouteId(int id);
 }

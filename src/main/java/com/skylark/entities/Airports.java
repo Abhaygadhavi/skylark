@@ -6,39 +6,30 @@
  */
 package com.skylark.entities;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 import com.sun.istack.NotNull;
 
 @Entity
-
 public class Airports {
 
 	@Id
 	private String IATACode;
-	
-	@OneToMany(cascade = CascadeType.ALL)
 	@NotNull
-	@JoinColumn
-	private List<Flight> flightId;
 	private String airportName;
+	@NotNull
 	private String airportState;
+	@NotNull
 	private String airportCity;
 	
 	public Airports() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Airports(String iATACode, List<Flight> flightId, String airportName, String airportState, String airportCity) {
+	public Airports(String iATACode,  String airportName, String airportState, String airportCity) {
 		super();
 		IATACode = iATACode;
-		this.flightId = flightId;
 		this.airportName = airportName;
 		this.airportState = airportState;
 		this.airportCity = airportCity;
@@ -50,14 +41,6 @@ public class Airports {
 
 	public void setIATACode(String iATACode) {
 		IATACode = iATACode;
-	}
-
-	public List<Flight> getFlightId() {
-		return flightId;
-	}
-
-	public void setFlightId(List<Flight> flightId) {
-		this.flightId = flightId;
 	}
 
 	public String getAirportName() {
@@ -86,7 +69,7 @@ public class Airports {
 
 	@Override
 	public String toString() {
-		return "Airports [IATACode=" + IATACode + ", flightId=" + flightId + ", airportName=" + airportName
+		return "Airports [IATACode=" + IATACode + ", airportName=" + airportName
 				+ ", airportState=" + airportState + ", airportCity=" + airportCity + "]";
 	}
 	
