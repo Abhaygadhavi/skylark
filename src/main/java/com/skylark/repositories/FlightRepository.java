@@ -7,6 +7,8 @@
 
 package com.skylark.repositories;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +17,8 @@ import com.skylark.entities.Flight;
 
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
 	List<Flight> findByRoute_RouteId(int id);
+	List<Flight> findByDepartureDate(LocalDate date);
+	List<Flight> findByArrivalDate(LocalDate date);
+	List<Flight> findByDepartureTime(LocalTime time);
+	List<Flight> findByArrivalTime(LocalTime time);
 }
