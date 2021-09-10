@@ -6,29 +6,49 @@
  */
 package com.skylark.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Ticket {
+	
 	@Id
 	@GeneratedValue(generator = "increment")
 	private String PNR;
-	private int flightId;
-	private String psId;
-	private int bookingId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Flight flight;
+	
+	@OneToMany(mappedBy = "ticket")
+	@NotNull
+	private List<Passenger> passenger;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Booking booking;
 	
 	public Ticket() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ticket(String pNR, int flightId, String psId, int bookingId) {
+	public Ticket(String pNR, Flight flight, List<Passenger> passenger, Booking booking) {
 		super();
 		PNR = pNR;
-		this.flightId = flightId;
-		this.psId = psId;
-		this.bookingId = bookingId;
+		this.flight = flight;
+		this.passenger = passenger;
+		this.booking = booking;
 	}
 
 	public String getPNR() {
@@ -39,35 +59,33 @@ public class Ticket {
 		PNR = pNR;
 	}
 
-	public int getFlightId() {
-		return flightId;
+	public Flight getFlight() {
+		return flight;
 	}
 
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 
-	public String getPsId() {
-		return psId;
+	public List<Passenger> getPassenger() {
+		return passenger;
 	}
 
-	public void setPsId(String psId) {
-		this.psId = psId;
+	public void setPassenger(List<Passenger> passenger) {
+		this.passenger = passenger;
 	}
 
-	public int getBookingId() {
-		return bookingId;
+	public Booking getBooking() {
+		return booking;
 	}
 
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
+	public void setBooking(Booking booking) {
+		this.booking = booking;
 	}
 
 	@Override
 	public String toString() {
-		return "Ticket [PNR=" + PNR + ", flightId=" + flightId + ", psId=" + psId + ", bookingId=" + bookingId + "]";
+		return "Ticket [PNR=" + PNR + ", flight=" + flight + ", passenger=" + passenger + ", booking=" + booking + "]";
 	}
-	
-	
 	
 }

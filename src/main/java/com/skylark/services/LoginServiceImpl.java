@@ -11,11 +11,14 @@ package com.skylark.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skylark.entities.Login;
 import com.skylark.exceptions.LoginNotFoundException;
 import com.skylark.repositories.LoginRepository;
 
+
+@Service
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
@@ -24,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public Login findByUsername(String username) throws LoginNotFoundException {
 		// TODO Auto-generated method stub
-		return userRepo.findById(username).orElseThrow(()->new LoginNotFoundException("User not found !"));
+		return userRepo.findByUsername(username).orElseThrow(()->new LoginNotFoundException("User not found !"));
 	}
 
 	@Override

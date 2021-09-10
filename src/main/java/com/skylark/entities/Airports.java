@@ -9,25 +9,27 @@ package com.skylark.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+import com.sun.istack.NotNull;
 
+@Entity
 public class Airports {
 
 	@Id
 	private String IATACode;
-	private int flightId;
+	@NotNull
 	private String airportName;
+	@NotNull
 	private String airportState;
+	@NotNull
 	private String airportCity;
 	
 	public Airports() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Airports(String iATACode, int flightId, String airportName, String airportState, String airportCity) {
+	public Airports(String iATACode,  String airportName, String airportState, String airportCity) {
 		super();
 		IATACode = iATACode;
-		this.flightId = flightId;
 		this.airportName = airportName;
 		this.airportState = airportState;
 		this.airportCity = airportCity;
@@ -39,14 +41,6 @@ public class Airports {
 
 	public void setIATACode(String iATACode) {
 		IATACode = iATACode;
-	}
-
-	public int getFlightId() {
-		return flightId;
-	}
-
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
 	}
 
 	public String getAirportName() {
@@ -75,7 +69,7 @@ public class Airports {
 
 	@Override
 	public String toString() {
-		return "Airports [IATACode=" + IATACode + ", flightId=" + flightId + ", airportName=" + airportName
+		return "Airports [IATACode=" + IATACode + ", airportName=" + airportName
 				+ ", airportState=" + airportState + ", airportCity=" + airportCity + "]";
 	}
 	

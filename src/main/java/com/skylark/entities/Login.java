@@ -22,7 +22,7 @@ public class Login {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Login(String emailId, int phoneNumber, String username, String password) {
+	public Login(String emailId, long phoneNumber, String username, String password) {
 		super();
 		this.emailId = emailId;
 		this.phoneNumber = phoneNumber;
@@ -42,7 +42,7 @@ public class Login {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

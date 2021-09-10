@@ -7,8 +7,6 @@ package com.skylark.services;
  * @description Service Interface for Admin in business layer
  */
 
-import java.util.List;
-
 import com.skylark.entities.Admin;
 import com.skylark.exceptions.AdminNotFoundException;
 

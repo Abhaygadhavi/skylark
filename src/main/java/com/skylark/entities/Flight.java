@@ -9,31 +9,46 @@ package com.skylark.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Flight {
+	
 	@Id
 	@GeneratedValue(generator = "increment")
 	private int flightId;
-	private int routeId;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull 
+	@JoinColumn
+	private Route route;
+	@NotNull
 	private LocalTime departureTime;
+	@NotNull
 	private LocalDate departureDate;
+	@NotNull
 	private LocalTime arrivalTime;
+	@NotNull
 	private LocalDate arrivalDate;
+	@NotNull
 	private int availableSeats;
 	
 	public Flight() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Flight(int flightId, int routeId, LocalTime departureTime, LocalDate departureDate, LocalTime arrivalTime,
+	public Flight(int flightId, Route route, LocalTime departureTime, LocalDate departureDate, LocalTime arrivalTime,
 			LocalDate arrivalDate, int availableSeats) {
 		super();
 		this.flightId = flightId;
-		this.routeId = routeId;
+		this.route = route;
 		this.departureTime = departureTime;
 		this.departureDate = departureDate;
 		this.arrivalTime = arrivalTime;
@@ -49,12 +64,12 @@ public class Flight {
 		this.flightId = flightId;
 	}
 
-	public int getRouteId() {
-		return routeId;
+	public Route getRoute() {
+		return route;
 	}
 
-	public void setRouteId(int routeId) {
-		this.routeId = routeId;
+	public void setRoute(Route route) {
+		this.route = route;
 	}
 
 	public LocalTime getDepartureTime() {
@@ -99,7 +114,7 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [flightId=" + flightId + ", routeId=" + routeId + ", departureTime=" + departureTime
+		return "Flight [flightId=" + flightId + ", route=" + route + ", departureTime=" + departureTime
 				+ ", departureDate=" + departureDate + ", arrivalTime=" + arrivalTime + ", arrivalDate=" + arrivalDate
 				+ ", availableSeats=" + availableSeats + "]";
 	}

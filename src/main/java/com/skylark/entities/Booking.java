@@ -7,39 +7,63 @@
 package com.skylark.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.sun.istack.NotNull;
 
 @Entity
 public class Booking {
 
 	@Id
+	@GeneratedValue(generator = "increment")
 	private int bookingId;
-	private int flightId;
-	private int routeId;
-	private int paymentId;
-	private String psId;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Flight flight;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@JoinColumn
+	private Payment payment;
+	
+	@OneToMany(mappedBy = "booking")
+	@NotNull
+	private List<Passenger> passenger;
+	@NotNull
 	private LocalDate bookingDate;
-	private int bookingTotalFare;
+	@NotNull
+	private float bookingTotalFare;
+	@NotNull
 	private LocalDate bookingJourneyDate;
+	@NotNull
 	private String bookingSeatType;
+	@NotNull
 	private String bookingStatus;
+	@NotNull
 	private int numberOfSeats;
 	
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(int bookingId, int flightId, int routeId, int paymentId, String psId, LocalDate bookingDate,
-			int bookingTotalFare, LocalDate bookingJourneyDate, String bookingSeatType, String bookingStatus,
+	public Booking(int bookingId, Flight flight, Payment payment, List<Passenger> passenger, LocalDate bookingDate,
+			float bookingTotalFare, LocalDate bookingJourneyDate, String bookingSeatType, String bookingStatus,
 			int numberOfSeats) {
 		super();
 		this.bookingId = bookingId;
-		this.flightId = flightId;
-		this.routeId = routeId;
-		this.paymentId = paymentId;
-		this.psId = psId;
+		this.flight = flight;
+		this.payment = payment;
+		this.passenger = passenger;
 		this.bookingDate = bookingDate;
 		this.bookingTotalFare = bookingTotalFare;
 		this.bookingJourneyDate = bookingJourneyDate;
@@ -56,36 +80,28 @@ public class Booking {
 		this.bookingId = bookingId;
 	}
 
-	public int getFlightId() {
-		return flightId;
+	public Flight getFlight() {
+		return flight;
 	}
 
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 
-	public int getRouteId() {
-		return routeId;
+	public Payment getPayment() {
+		return payment;
 	}
 
-	public void setRouteId(int routeId) {
-		this.routeId = routeId;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
-	public int getPaymentId() {
-		return paymentId;
+	public List<Passenger> getPassenger() {
+		return passenger;
 	}
 
-	public void setPaymentId(int paymentId) {
-		this.paymentId = paymentId;
-	}
-
-	public String getPsId() {
-		return psId;
-	}
-
-	public void setPsId(String psId) {
-		this.psId = psId;
+	public void setPassenger(List<Passenger> passenger) {
+		this.passenger = passenger;
 	}
 
 	public LocalDate getBookingDate() {
@@ -96,11 +112,11 @@ public class Booking {
 		this.bookingDate = bookingDate;
 	}
 
-	public int getBookingTotalFare() {
+	public float getBookingTotalFare() {
 		return bookingTotalFare;
 	}
 
-	public void setBookingTotalFare(int bookingTotalFare) {
+	public void setBookingTotalFare(float bookingTotalFare) {
 		this.bookingTotalFare = bookingTotalFare;
 	}
 
@@ -138,12 +154,11 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", flightId=" + flightId + ", routeId=" + routeId + ", paymentId="
-				+ paymentId + ", psId=" + psId + ", bookingDate=" + bookingDate + ", bookingTotalFare="
-				+ bookingTotalFare + ", bookingJourneyDate=" + bookingJourneyDate + ", bookingSeatType="
-				+ bookingSeatType + ", bookingStatus=" + bookingStatus + ", numberOfSeats=" + numberOfSeats + "]";
+		return "Booking [bookingId=" + bookingId + ", flight=" + flight + ", payment=" + payment + ", passenger="
+				+ passenger + ", bookingDate=" + bookingDate + ", bookingTotalFare=" + bookingTotalFare
+				+ ", bookingJourneyDate=" + bookingJourneyDate + ", bookingSeatType=" + bookingSeatType
+				+ ", bookingStatus=" + bookingStatus + ", numberOfSeats=" + numberOfSeats + "]";
 	}
-	
 	
 	
 	

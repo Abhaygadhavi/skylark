@@ -16,5 +16,6 @@ import com.skylark.entities.Login;
 public interface LoginRepository extends JpaRepository<Login, String> {
 
 	Optional<Login> findByPhoneNumber(long phoneNumber);
+	Optional<Login> findByUsername(String username);
 
 }
