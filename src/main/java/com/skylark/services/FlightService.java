@@ -7,6 +7,8 @@
 
 package com.skylark.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.skylark.entities.Flight;
@@ -17,4 +19,8 @@ public interface FlightService {
 	void delFlight(int id) throws FlightNotFoundException;
 	void editFlight(Flight f) throws FlightNotFoundException;
 	List<Flight> findFlightByRouteId(int id);
+	List<Flight> findByDeptDate(LocalDate date) throws FlightNotFoundException;
+	List<Flight> findByArrDate(LocalDate date) throws FlightNotFoundException;
+	List<Flight> findByDeptTime(LocalTime time) throws FlightNotFoundException;
+	List<Flight> findByArrTime(LocalTime time) throws FlightNotFoundException;
 }

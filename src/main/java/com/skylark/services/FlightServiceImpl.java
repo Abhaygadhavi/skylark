@@ -11,6 +11,8 @@ import com.skylark.entities.Flight;
 import com.skylark.exceptions.FlightNotFoundException;
 import com.skylark.repositories.FlightRepository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +55,30 @@ public class FlightServiceImpl implements FlightService {
 	public List<Flight> findFlightByRouteId(int id) {
 		// TODO Auto-generated method stub
 		return fliRepo.findByRoute_RouteId(id);
+	}
+
+	@Override
+	public List<Flight> findByDeptDate(LocalDate date) throws FlightNotFoundException{
+		// TODO Auto-generated method stub
+		return fliRepo.findByDepartureDate(date);
+	}
+
+	@Override
+	public List<Flight> findByArrDate(LocalDate date) throws FlightNotFoundException{
+		// TODO Auto-generated method stub
+		return fliRepo.findByArrivalDate(date);
+	}
+
+	@Override
+	public List<Flight> findByDeptTime(LocalTime time) throws FlightNotFoundException{
+		// TODO Auto-generated method stub
+		return fliRepo.findByDepartureTime(time);
+	}
+
+	@Override
+	public List<Flight> findByArrTime(LocalTime time) throws FlightNotFoundException{
+		// TODO Auto-generated method stub
+		return fliRepo.findByArrivalTime(time);
 	}
 
 }

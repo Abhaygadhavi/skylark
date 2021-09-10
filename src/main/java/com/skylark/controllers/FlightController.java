@@ -8,6 +8,10 @@
 package com.skylark.controllers;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,6 +58,54 @@ public class FlightController {
 			e.printStackTrace();
 		}
 		return "Flight Not Found";
+	}
+	
+	@PostMapping("/depDate")
+	public List<Flight> getByDepartureDate(@RequestParam("DepDate") LocalDate date) {
+		try {
+			return fliService.findByDeptDate(date);
+			
+		} catch (FlightNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@PostMapping("/arrDate")
+	public List<Flight> getByArrivalDate(@RequestParam("ArrDate") LocalDate date) {
+		try {
+			return fliService.findByArrDate(date);
+			
+		} catch (FlightNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@PostMapping("/depTime")
+	public List<Flight> getByDepartureTime(@RequestParam("DepTime") LocalTime time) {
+		try {
+			return fliService.findByDeptTime(time);
+			
+		} catch (FlightNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@PostMapping("/arrTime")
+	public List<Flight> getByArrivalTime(@RequestParam("ArrTime") LocalTime time) {
+		try {
+			return fliService.findByArrTime(time);
+			
+		} catch (FlightNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
