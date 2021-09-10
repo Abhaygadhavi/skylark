@@ -40,9 +40,9 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public Login findByPhone(String phoneNumber) throws LoginNotFoundException {
+	public Login findByPhone(long phoneNumber) throws LoginNotFoundException {
 		// TODO Auto-generated method stub
-		return userRepo.findById(phoneNumber).orElseThrow(()->new LoginNotFoundException("User not found !"));
+		return userRepo.findByPhoneNumber(phoneNumber).orElseThrow(()->new LoginNotFoundException("User not found !"));
 	}
 
 }

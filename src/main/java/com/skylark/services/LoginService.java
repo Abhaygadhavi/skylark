@@ -17,6 +17,6 @@ public interface LoginService {
 
 	Login findByEmailId(String emailId) throws LoginNotFoundException;
 	Login findByUsername(String username) throws LoginNotFoundException;
-	Login findByPhone(String phoneNumber) throws LoginNotFoundException;
+	Login findByPhone(long phoneNumber) throws LoginNotFoundException;
 	List<Login> findAllUsers();
 }
