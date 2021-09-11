@@ -22,13 +22,13 @@ public class Passenger {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
-	@JoinColumn(name = "PNR")
-	private Ticket ticket;
+	@JoinColumn
+	private Ticket PNR;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
-	@JoinColumn(name = "bookingId")
-	private Booking booking;
+	@JoinColumn
+	private Booking bookingId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@NotNull
@@ -47,12 +47,12 @@ public class Passenger {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Passenger(String psId, Ticket ticket, Booking booking, Login login, String firstName, String lastName,
+	public Passenger(String psId, Ticket PNR, Booking bookingId, Login login, String firstName, String lastName,
 			 String gender, int phoneNumber) {
 		super();
 		this.psId = psId;
-		this.ticket = ticket;
-		this.booking = booking;
+		this.PNR = PNR;
+		this.bookingId = bookingId;
 		this.login = login;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -68,20 +68,20 @@ public class Passenger {
 		this.psId = psId;
 	}
 
-	public Ticket getTicket() {
-		return ticket;
+	public Ticket getPNR() {
+		return PNR;
 	}
 
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+	public void setPNR(Ticket PNR) {
+		this.PNR = PNR;
 	}
 
-	public Booking getBooking() {
-		return booking;
+	public Booking getBookingId() {
+		return bookingId;
 	}
 
-	public void setBooking(Booking booking) {
-		this.booking = booking;
+	public void setBooking(Booking bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public Login getLogin() {
@@ -126,7 +126,7 @@ public class Passenger {
 
 	@Override
 	public String toString() {
-		return "Passenger [psId=" + psId + ", ticket=" + ticket + ", booking=" + booking + ", login=" + login
+		return "Passenger [psId=" + psId + ", ticket=" + PNR + ", booking=" + bookingId + ", login=" + login
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
 				+ ", phoneNumber=" + phoneNumber + "]";
 	}

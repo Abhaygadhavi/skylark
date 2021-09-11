@@ -30,7 +30,7 @@ public class Ticket {
 	@JoinColumn
 	private Flight flight;
 	
-	@OneToMany(mappedBy = "ticket")
+	@OneToMany(mappedBy = "PNR")
 	@NotNull
 	private List<Passenger> passenger;
 	

@@ -9,7 +9,6 @@ package com.skylark.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +24,7 @@ public class Flight {
 	@GeneratedValue(generator = "increment")
 	private int flightId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@NotNull 
 	@JoinColumn
 	private Route route;

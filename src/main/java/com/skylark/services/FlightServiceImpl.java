@@ -10,6 +10,7 @@ package com.skylark.services;
 import com.skylark.entities.Flight;
 import com.skylark.exceptions.FlightNotFoundException;
 import com.skylark.repositories.FlightRepository;
+import com.skylark.repositories.RouteRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,9 +26,14 @@ public class FlightServiceImpl implements FlightService {
 	@Autowired
 	private FlightRepository fliRepo;
 	
+	@Autowired
+	private RouteRepository routeRepo;
+	
 	@Override
 	public void addFlight(Flight f) {
 		// TODO Auto-generated method stub
+		f.getRoute().setRouteId(f.getRoute().getFromCity()+f.getRoute().getToCity());
+		routeRepo.save(f.getRoute());
 		fliRepo.save(f);
 	}
 

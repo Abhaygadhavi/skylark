@@ -36,7 +36,7 @@ public class Booking {
 	@JoinColumn
 	private Payment payment;
 	
-	@OneToMany(mappedBy = "booking")
+	@OneToMany(mappedBy = "bookingId")
 	@NotNull
 	private List<Passenger> passenger;
 	@NotNull

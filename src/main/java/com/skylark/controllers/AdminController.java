@@ -1,27 +1,14 @@
 package com.skylark.controllers;
 
-/*
- * @author abhay.gadhvi@stltech.in
- * @version 1.0
- * @creation_date 10-sept-2021
- * @copyright Skylark Airlines
- */
-
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skylark.entities.Admin;
-import com.skylark.entities.Login;
 import com.skylark.exceptions.AdminNotFoundException;
-import com.skylark.exceptions.LoginNotFoundException;
 import com.skylark.services.AdminService;
-import com.skylark.services.LoginService;
 
 @RestController
 @RequestMapping("/validate")

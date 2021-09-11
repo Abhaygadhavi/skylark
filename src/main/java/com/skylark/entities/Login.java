@@ -9,6 +9,8 @@ package com.skylark.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 
 @Entity
 public class Login {
@@ -16,6 +18,7 @@ public class Login {
 	private String emailId;
 	private long phoneNumber;
 	private String username;
+	@NotNull
 	private String password;
 	
 	public Login() {

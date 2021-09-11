@@ -8,8 +8,8 @@ package com.skylark.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -18,8 +18,8 @@ import com.sun.istack.NotNull;
 @Entity
 public class Route {
 	@Id
-	@GeneratedValue(generator = "increment")
-	private int routeId;
+	@Column(name = "from_to")
+	private String routeId;
 	
 	@OneToMany(mappedBy = "route")
 	@NotNull
@@ -35,7 +35,7 @@ public class Route {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Route(int routeId, String fromCity, String toCity, float fare) {
+	public Route(String routeId, String fromCity, String toCity, float fare) {
 		super();
 		this.routeId = routeId;
 		this.fromCity = fromCity;
@@ -43,11 +43,11 @@ public class Route {
 		this.fare = fare;
 	}
 
-	public int getRouteId() {
+	public String getRouteId() {
 		return routeId;
 	}
 
-	public void setRouteId(int routeId) {
+	public void setRouteId(String routeId) {
 		this.routeId = routeId;
 	}
 
