@@ -4,7 +4,7 @@ package com.skylark.services;
  * @author abhay.gadhvi@stltech.in
  * @version 1.0
  * @creation_date 11-sep-2021
- * @copyright Sterlite technologies Ltd.
+ * @copyright Skylark Airlines
  * @description Service Interface implementer for Booking in business layer
  */
 
@@ -62,15 +62,15 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<Booking> findByBookingId(int id) throws BookingNotFoundException {
+	public List<Booking> findByBookId(int id) throws BookingNotFoundException {
 		// TODO Auto-generated method stub
-		return bookRepo.findByBookId(id);
+		return bookRepo.findByBookingId(id);
 	}
 
 	@Override
-	public List<Booking> findByJourneyDate(LocalDate date) throws FlightNotFoundException {
+	public List<Booking> findByBookJourDate(LocalDate date) throws FlightNotFoundException {
 		// TODO Auto-generated method stub
-		return bookRepo.findByJourDate(date);
+		return bookRepo.findByBookingJourneyDate(date);
 	}
 	
 	

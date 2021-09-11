@@ -4,7 +4,7 @@ package com.skylark.services;
  * @author abhay.gadhvi@stltech.in
  * @version 1.0
  * @creation_date 11-sep-2021
- * @copyright Sterlite technologies Ltd.
+ *  @copyright Skylark Airlines
  * @description Service Interface  for Booking in business layer
  */
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ public interface BookingService {
 	void deleteBooking(int id) throws BookingNotFoundException;
 	void editBooking(Booking b) throws BookingNotFoundException;
 	void checkStatus(Booking b);
-	List<Booking> findByBookingId(int id) throws BookingNotFoundException;
-	List<Booking> findByJourneyDate(LocalDate date) throws FlightNotFoundException;
+	List<Booking> findByBookId(int id) throws BookingNotFoundException;
+	List<Booking> findByBookJourDate(LocalDate date) throws FlightNotFoundException;
 	
 }

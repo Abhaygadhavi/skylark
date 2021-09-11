@@ -3,7 +3,7 @@ package com.skylark.services;
  * @author abhay.gadhvi@stltech.in
  * @version 1.0
  * @creation_date 09-sep-2021
- * @copyright Sterlite technologies Ltd.
+ * @copyright Skylark Airlines
  * @description Service Interface for Admin in business layer
  */
 
