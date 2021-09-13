@@ -49,6 +49,7 @@ public class RouteServiceImpl implements RouteService {
 	@Override
 	public void addRoute(Route route) {
 		// TODO Auto-generated method stub
+		route.setRouteId(route.getFromCity()+route.getToCity());
 		routeRepo.save(route);
 
 	}
@@ -67,11 +68,11 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public void removeRoute(Route route) {
+	public void removeRoute(String route) {
 		// TODO Auto-generated method stub
-		Optional<Route> op = routeRepo.findById(route.getRouteId());
+		Optional<Route> op = routeRepo.findById(route);
 		if(op.isPresent()) {
-			routeRepo.delete(route);
+			routeRepo.delete(op.get());
 		}
 		else {
 			System.out.println("Sorry! route is not found");

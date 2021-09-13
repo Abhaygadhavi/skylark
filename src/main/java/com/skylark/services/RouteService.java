@@ -19,7 +19,7 @@ public interface RouteService {
 	List<Route> findAll(); 
 	void addRoute(Route route); 
 	void editRoute(Route route); 
-	void removeRoute(Route route);
+	void removeRoute(String route);
 	
 
 }

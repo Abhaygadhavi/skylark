@@ -39,8 +39,8 @@ public class RouteController {
 	}
 	
 	@PostMapping("/delete")
-	public String deleteRoute(@RequestBody Route route) throws RouteNotFoundException {
-		roService.removeRoute(route);
+	public String deleteRoute(@RequestBody String routeId) throws RouteNotFoundException {
+		roService.removeRoute(routeId);
 		return "Route deleted Successfully";
 		
 	}
