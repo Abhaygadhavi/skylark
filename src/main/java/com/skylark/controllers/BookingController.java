@@ -48,7 +48,7 @@ public class BookingController {
 	@GetMapping("/date")
 	public String getByJourDate(@RequestBody LocalDate date) {
 		try {
-			bookService.findByJourneyDate(date);
+			bookService.findByBookJourneyDate(date);
 			return "Booking Detais Updated";
 		} catch (FlightNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -15,10 +15,13 @@ import com.skylark.entities.Route;
  * @author mansi.jain@stltech.in
  * @version 1.0
  * @creation_date 09-sept-2021
- * @copyright Sterlite technologies Ltd.
- */
-public interface RouteRepository extends JpaRepository<Route, String> {
 
-	//Optional<Route> findByCity(String fromCity);
+ * @copyright Skylark Airline
+ */
+public interface RouteRepository extends JpaRepository<Route,String> {
+
+	Optional<Route> findByFromCity(String fromCity);
+
+	Optional<Route> findByToCity(String toCity);
 
 }
