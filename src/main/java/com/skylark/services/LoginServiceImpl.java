@@ -9,11 +9,14 @@ package com.skylark.services;
  */
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skylark.entities.Booking;
 import com.skylark.entities.Login;
+import com.skylark.exceptions.BookingNotFoundException;
 import com.skylark.exceptions.LoginNotFoundException;
 import com.skylark.repositories.LoginRepository;
 
@@ -46,6 +49,37 @@ public class LoginServiceImpl implements LoginService {
 	public Login findByPhone(long phoneNumber) throws LoginNotFoundException {
 		// TODO Auto-generated method stub
 		return userRepo.findByPhoneNumber(phoneNumber).orElseThrow(()->new LoginNotFoundException("User not found !"));
+	}
+
+	@Override
+	public void addUser(Login user) {
+		// TODO Auto-generated method stub
+		userRepo.save(user);
+		
+	}
+
+	@Override
+	public void delUser(String emailId) throws LoginNotFoundException {
+		// TODO Auto-generated method stub
+		Optional<Login> op=userRepo.findById(emailId);
+		if (op.isPresent()) {
+			userRepo.delete(op.get());
+		} else {
+			throw new LoginNotFoundException("there is no user according to this email-id");
+		}
+		
+	}
+
+	@Override
+	public void editUser(Login user) throws LoginNotFoundException {
+		// TODO Auto-generated method stub
+		Optional<Login> op=userRepo.findById(user.getEmailId());
+		if (op.isPresent()) {
+			userRepo.save(user);
+		} else {
+			throw new LoginNotFoundException("there is no user according to this email-id");
+		}
+		
 	}
 
 }

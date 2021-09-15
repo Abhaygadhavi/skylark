@@ -19,4 +19,7 @@ public interface LoginService {
 	Login findByUsername(String username) throws LoginNotFoundException;
 	Login findByPhone(long phoneNumber) throws LoginNotFoundException;
 	List<Login> findAllUsers();
+	void addUser(Login user);
+	void delUser(String emailId) throws LoginNotFoundException;
+	void editUser(Login user) throws LoginNotFoundException;
 }
