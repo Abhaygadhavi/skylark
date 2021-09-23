@@ -40,7 +40,7 @@ public class Booking {
 	@OneToMany(mappedBy = "bookingId")
 	@NotNull
 	private List<Passenger> passenger;
-	
+
 	@NotNull
 	private LocalDate bookingDate;
 	@NotNull

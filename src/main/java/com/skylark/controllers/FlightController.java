@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +31,7 @@ import com.skylark.services.RouteService;
 @RestController
 @RequestMapping("/flight")
 @CrossOrigin
+
 public class FlightController {
 	
 	@Autowired
@@ -46,7 +46,7 @@ public class FlightController {
 		fliService.addFlight(f);
 		return "Flight Added Successfully";
 	}
-	
+
 	@CrossOrigin
 	@DeleteMapping("/delete/{id}")
 	public String deleteFlight(@PathVariable("id") int id) {
@@ -119,10 +119,10 @@ public class FlightController {
 		}
 		return null;
 	}
-	
+
 	@GetMapping("/flights")
 	public List<Flight> getAllFlights() {
 		return fliService.findAll();
 	}
-	
+
 }

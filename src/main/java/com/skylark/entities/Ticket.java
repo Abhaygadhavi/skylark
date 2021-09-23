@@ -27,6 +27,7 @@ public class Ticket {
 	@NotNull
 	@JoinColumn
 	private Flight flight;//redundancy
+
 	
 	@OneToMany(mappedBy = "PNR")
 	@NotNull

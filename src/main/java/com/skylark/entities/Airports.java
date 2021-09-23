@@ -27,7 +27,11 @@ public class Airports {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	public Airports(String iATACode, String airportName, String airportState, String airportCity) {
+=======
+	public Airports(String iATACode,  String airportName, String airportState, String airportCity) {
+>>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
 		super();
 		IATACode = iATACode;
 		this.airportName = airportName;
@@ -69,10 +73,16 @@ public class Airports {
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Airports [IATACode=" + IATACode + ", airportName=" + airportName + ", airportState=" + airportState
 				+ ", airportCity=" + airportCity + "]";
 	}
 
 	
+=======
+		return "Airports [IATACode=" + IATACode + ", airportName=" + airportName
+				+ ", airportState=" + airportState + ", airportCity=" + airportCity + "]";
+	}
+>>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
 	
 }

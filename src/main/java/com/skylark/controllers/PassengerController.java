@@ -10,7 +10,6 @@ package com.skylark.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +27,8 @@ public class PassengerController {
 	@Autowired
 	private PassengerService passService;
 	
-	@PutMapping("/add")
+
+	@PostMapping("/add")
 	public String insertPassenger(@RequestBody Passenger passenger) throws PassengerNotFoundException {
 		passService.addPassenger(passenger);
 		return "Passenger Added Successfully";
@@ -39,7 +39,7 @@ public class PassengerController {
 		passService.editPassenger(passenger);
 		return "Passenger updated Successfully";
 	}
-	
+
 	@DeleteMapping("/delete")
 	public String deletePassenger(@RequestBody Passenger passenger) throws PassengerNotFoundException {
 		passService.removePassenger(passenger);

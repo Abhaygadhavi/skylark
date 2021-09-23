@@ -29,7 +29,7 @@ public class FlightServiceImpl implements FlightService {
 	@Autowired
 	private RouteRepository routeRepo;
 	
-	
+
 	@Override
 	public void addFlight(Flight f) {
 		// TODO Auto-generated method stub
@@ -46,7 +46,7 @@ public class FlightServiceImpl implements FlightService {
 			fliRepo.delete(op.get());
 			routeRepo.delete(op.get().getRoute());
 		}
-			
+		
 		else
 			throw new FlightNotFoundException("Sorry! No Flight exists");
 	}

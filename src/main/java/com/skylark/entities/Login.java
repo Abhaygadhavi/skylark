@@ -16,6 +16,7 @@ import com.sun.istack.NotNull;
 public class Login {
 	@Id
 	private String emailId;
+	
 	@NotNull
 	private long phoneNumber;
 	private String username;

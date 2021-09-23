@@ -66,4 +66,28 @@ public class LoginController {
 	public List<Login> findAll(){
 		return userService.findAllUsers();
 	}
+	
+	@PostMapping("/signup")
+	public String insertUser(@RequestBody Login user) {
+		userService.addUser(user);
+		return "User added successfull";
+	}
+	
+	@PostMapping("/edit")
+	public String updateUser(@RequestBody Login user) throws LoginNotFoundException {
+		userService.editUser(user);
+		return "Passenger updated Successfully";
+	}
+	
+	@GetMapping("/del")
+	public String delBooking(@RequestBody String emailId) {
+		try {
+			userService.delUser(emailId);
+			return "User Deleted";
+		} catch (LoginNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "Your User is not present";
+	}
 }

@@ -10,7 +10,10 @@ package com.skylark.repositories;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+<<<<<<< HEAD
 import org.springframework.data.jpa.repository.Query;
+=======
+>>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
 
 import com.skylark.entities.Airports;
 
