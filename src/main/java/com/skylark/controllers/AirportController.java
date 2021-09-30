@@ -6,7 +6,7 @@
  */
 package com.skylark.controllers;
 
-<<<<<<< HEAD
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skylark.entities.Airports;
 import com.skylark.exceptions.AirportAlreadyExistsException;
-=======
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,13 +29,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skylark.entities.Airports;
->>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
 import com.skylark.exceptions.AirportNotFoundException;
 import com.skylark.services.AirportService;
 
 @RestController
 @RequestMapping("/airport")
-<<<<<<< HEAD
 @CrossOrigin
 public class AirportController {
 	
@@ -75,12 +73,7 @@ public class AirportController {
 		return "Airport Not Found";
 	}
 	
-=======
-public class AirportController {
-	@Autowired
-	private AirportService airService;
-	
->>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
+
 	@GetMapping("/name/{nm}")
 	public Airports getByName(@PathVariable("nm") String name) {
 		try {
@@ -103,12 +96,11 @@ public class AirportController {
 		return null;
 	}
 	
-<<<<<<< HEAD
+
 	@GetMapping("/airports")
 	public List<Airports> getAirports() {
 		return airService.getAllAirports();
 	}
 	
-=======
->>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
+
 }

@@ -51,15 +51,15 @@ public class BookingController {
 		return "Your booking is not present";
 	}
 	
-	@GetMapping("/date")
-	public List<Booking> getByJourDate(@RequestParam("date") LocalDate date) {
-		try {
-			return bookService.findByBookJourneyDate(date);
-		} catch (FlightNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+//	@GetMapping("/date")
+//	public List<Booking> getByJourDate(@RequestParam("date") LocalDate date) {
+//		try {
+//			return bookService.findByBookJourneyDate(date);
+//		} catch (FlightNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 	
 }

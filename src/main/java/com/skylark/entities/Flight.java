@@ -27,7 +27,7 @@ public class Flight {
 	@GeneratedValue(generator = "increment")
 	private int flightId;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull 
 	@JoinColumn
 	private Route route;

@@ -45,8 +45,8 @@ public class Booking {
 	private LocalDate bookingDate;
 	@NotNull
 	private float bookingTotalFare;
-	@NotNull
-	private LocalDate bookingJourneyDate;
+//	@NotNull
+//	private LocalDate bookingJourneyDate;
 	@NotNull
 	private String bookingSeatType;
 	@NotNull
@@ -59,7 +59,7 @@ public class Booking {
 	}
 
 	public Booking(int bookingId, Flight flight, Payment payment, List<Passenger> passenger, LocalDate bookingDate,
-			float bookingTotalFare, LocalDate bookingJourneyDate, String bookingSeatType, String bookingStatus,
+			float bookingTotalFare, String bookingSeatType, String bookingStatus,
 			int numberOfSeats) {
 		super();
 		this.bookingId = bookingId;
@@ -68,7 +68,7 @@ public class Booking {
 		this.passenger = passenger;
 		this.bookingDate = bookingDate;
 		this.bookingTotalFare = bookingTotalFare;
-		this.bookingJourneyDate = bookingJourneyDate;
+//		this.bookingJourneyDate = bookingJourneyDate;
 		this.bookingSeatType = bookingSeatType;
 		this.bookingStatus = bookingStatus;
 		this.numberOfSeats = numberOfSeats;
@@ -122,13 +122,13 @@ public class Booking {
 		this.bookingTotalFare = bookingTotalFare;
 	}
 
-	public LocalDate getBookingJourneyDate() {
-		return bookingJourneyDate;
-	}
-
-	public void setBookingJourneyDate(LocalDate bookingJourneyDate) {
-		this.bookingJourneyDate = bookingJourneyDate;
-	}
+//	public LocalDate getBookingJourneyDate() {
+//		return bookingJourneyDate;
+//	}
+//
+//	public void setBookingJourneyDate(LocalDate bookingJourneyDate) {
+//		this.bookingJourneyDate = bookingJourneyDate;
+//	}
 
 	public String getBookingSeatType() {
 		return bookingSeatType;
@@ -158,7 +158,7 @@ public class Booking {
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", flight=" + flight + ", payment=" + payment + ", passenger="
 				+ passenger + ", bookingDate=" + bookingDate + ", bookingTotalFare=" + bookingTotalFare
-				+ ", bookingJourneyDate=" + bookingJourneyDate + ", bookingSeatType=" + bookingSeatType
+				+  ", bookingSeatType=" + bookingSeatType
 				+ ", bookingStatus=" + bookingStatus + ", numberOfSeats=" + numberOfSeats + "]";
 	}
 	

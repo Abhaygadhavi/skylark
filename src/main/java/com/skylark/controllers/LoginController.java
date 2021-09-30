@@ -12,6 +12,8 @@ import java.util.List;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,19 +27,19 @@ import com.skylark.services.LoginService;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoginController {
 
 	@Autowired
 	private LoginService userService;
 	
 	@PostMapping("/name")
-	public String userValidate(@RequestBody Login user)
+	public ResponseEntity<Login> userValidate(@RequestBody Login user)
 	{ 
 		System.out.println("o"+user);
 		Login l1 = new Login();
 		try {
-			if(user.getEmailId()!= null) {
+			if(!user.getEmailId().equals(null)  && !user.getEmailId().equals("")) {
 				l1 = userService.findByEmailId(user.getEmailId());
 				System.out.println("e"+l1);
 			}
@@ -48,18 +50,17 @@ public class LoginController {
 		} catch (LoginNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "user not found";
 		}
-		if(l1.getPassword().equals(user.getPassword()))
+		if(l1.getPassword()!=null && l1.getPassword().equals(user.getPassword()))
 		{
 			System.out.println("a");
 			
-			return "user available";
+			return new ResponseEntity<>(l1,HttpStatus.OK);
 		}
 		else
 		{
 			System.out.println("na");
-			return "user not available";
+			return new ResponseEntity<>(l1, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	@GetMapping("/users")

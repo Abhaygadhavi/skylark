@@ -33,7 +33,7 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public void addFlight(Flight f) {
 		// TODO Auto-generated method stub
-//		f.getRoute().setRouteId(f.getRoute().getFromCity()+f.getRoute().getToCity());
+		f.getRoute().setRouteId(f.getRoute().getFromCity()+f.getRoute().getToCity());
 //		routeRepo.save(f.getRoute());
 		fliRepo.save(f);
 	}

@@ -22,6 +22,6 @@ public interface BookingService {
 	void editBooking(Booking b) throws BookingNotFoundException;
 	void checkStatus(Booking b);
 	List<Booking> findByBookId(int id) throws BookingNotFoundException;
-	List<Booking> findByBookJourneyDate(LocalDate date) throws FlightNotFoundException;
+//	List<Booking> findByBookJourneyDate(LocalDate date) throws FlightNotFoundException;
 	
 }

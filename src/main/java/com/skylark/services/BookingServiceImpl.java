@@ -105,11 +105,11 @@ public class BookingServiceImpl implements BookingService {
 		return bookRepo.findByBookingId(id);
 	}
 
-	@Override
-	public List<Booking> findByBookJourneyDate(LocalDate date) throws FlightNotFoundException {
-		// TODO Auto-generated method stub
-		return bookRepo.findByBookingJourneyDate(date);
-	}
+//	@Override
+//	public List<Booking> findByBookJourneyDate(LocalDate date) throws FlightNotFoundException {
+//		// TODO Auto-generated method stub
+//		return bookRepo.findByBookingJourneyDate(date);
+//	}
 	
 	
 

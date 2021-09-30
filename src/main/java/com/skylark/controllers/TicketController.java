@@ -15,13 +15,13 @@ import com.skylark.exceptions.TicketNotFoundException;
 import com.skylark.services.TicketService;
 
 @RestController
-@RequestMapping("/addticket")
+@RequestMapping("/ticket")
 public class TicketController {
 
 	@Autowired
 	private TicketService ticketservice;
 
-	@GetMapping("/findticketbyfid")
+	@GetMapping("/findbyfid")
 	public Ticket findTicketByFlightId(@RequestParam("fid") int fid)  {
 		// TODO Auto-generated method stub
 		try {
@@ -33,7 +33,7 @@ public class TicketController {
 		return null;
 	}
 
-	@GetMapping("/findticketbybid")
+	@GetMapping("/findbybid")
 	public Ticket findTicketByBookingId(@RequestParam("bid") int bid)  {
 		// TODO Auto-generated method stub
 		try {

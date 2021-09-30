@@ -7,20 +7,18 @@
 
 package com.skylark.services;
 
-<<<<<<< HEAD
+
 import java.util.List;
 import java.util.Optional;
 
-=======
->>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skylark.entities.Airports;
-<<<<<<< HEAD
+
 import com.skylark.exceptions.AirportAlreadyExistsException;
-=======
->>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
+
 import com.skylark.exceptions.AirportNotFoundException;
 import com.skylark.repositories.AirportRepository;
 
@@ -43,7 +41,7 @@ public class AirportServiceImpl implements AirportService {
 		return airRepo.findById(id).orElseThrow(()->new AirportNotFoundException("Sorry! No Airport exists"));
 	}
 
-<<<<<<< HEAD
+
 	@Override
 	public void addAirport(Airports a) throws AirportAlreadyExistsException {
 		// TODO Auto-generated method stub
@@ -70,6 +68,5 @@ public class AirportServiceImpl implements AirportService {
 		return airRepo.findAll();
 	}
 
-=======
->>>>>>> f3511c4fdf931c143d447b2929f78e7c0b424cb2
+
 }
